@@ -4,39 +4,42 @@ Platform: Unstop
 Difficulty: Easy
 Date: 20-03-2026
 
-Problem Statement:
-Given a coordinate of a chessboard cell (like a1, b2, etc.),
-determine whether the cell is Black or White.
+Problem Type / Pattern:
+Math
+Parity Pattern
+Coordinate Mapping
 
-The chessboard columns are represented by letters (a–h)
-and rows by numbers (1–8).
+Concepts Used:
+ASCII Character Arithmetic
+Parity (Even/Odd)
+Coordinate Conversion
+
+Problem Statement:
+Given a chessboard coordinate like "a1", determine whether the cell
+is Black or White. Columns are represented by letters (a–h) and rows
+by numbers (1–8).
 
 Approach:
-1. Convert the column letter to a number.
-   Example: a=1, b=2, ..., h=8
-2. Convert the row character to integer.
+1. Convert the column letter into a number using ASCII arithmetic.
+   'a' → 1, 'b' → 2, ..., 'h' → 8
+2. Convert the row character into an integer.
 3. Add both coordinates.
-4. If the sum is even → Black
-5. If the sum is odd → White
+4. If (x + y) is even → Black
+5. If (x + y) is odd → White
 
-Reasoning:
-On a chessboard, cells with even coordinate sums are black
-and odd sums are white.
-
-Time Complexity: O(1)
-Space Complexity: O(1)
+Complexity:
+Time: O(1)
+Space: O(1)
 
 Key Learning:
-- Character to integer conversion in C
-- ASCII arithmetic for letter indexing
-- Understanding parity (even/odd) logic
+- Character to integer conversion using ASCII
+- Recognizing parity patterns in grid problems
 
 Improvement Notes:
-- Input size can be restricted to 2 characters instead of 256
+- Input size is fixed (2 characters), so using char s[3] is sufficient.
 */
 
 #include <stdio.h>
-#include <string.h>
 
 const char* determine_color(const char* s) {
     int x = s[0] - 'a' + 1;
@@ -50,7 +53,7 @@ const char* determine_color(const char* s) {
 }
 
 int main() {
-    char s[3];   // only 2 chars + null terminator needed
+    char s[3];
     scanf("%s", s);
 
     const char* result = determine_color(s);
