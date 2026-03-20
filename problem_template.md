@@ -5,6 +5,8 @@ Problem Name:
 Difficulty:
 Date:
 
+## Problem Type 
+
 ## Problem Statement
 (Short description)
 
