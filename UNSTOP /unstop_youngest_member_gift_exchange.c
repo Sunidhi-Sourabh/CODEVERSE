@@ -4,46 +4,46 @@ Platform: Unstop
 Difficulty: Easy–Medium
 Date: 20-03-2026
 
-Problem Statement:
-In a royal family, gifts are exchanged during Christmas. The youngest member
-receives gifts from everyone else but does not give gifts to anyone.
+Problem Type / Pattern:
+Graph Problem
+Sink Node Detection
+Indegree–Outdegree Analysis
 
-Given the gift exchange data, identify the youngest member.
+Concepts Used:
+Graph Modeling
+Counting Technique
+Indegree and Outdegree
+
+Problem Statement:
+In a royal family, gifts are exchanged. The youngest member receives
+gifts from everyone else but does not give any gifts.
 
 Input:
-n → number of family members
-m → number of gifts exchanged
-
-Each of the next m lines contains:
+n → number of members
+m → number of gift exchanges
 ai bi → ai gave a gift to bi
 
 Output:
-Print the youngest member.
-If no such member exists, print -1.
+Return the youngest member or -1 if no such member exists.
 
 Approach:
 1. Track how many gifts each member gives.
 2. Track how many gifts each member receives.
 3. The youngest member must satisfy:
-   - given[i] == 0     (gives no gifts)
-   - received[i] == n-1 (receives from all others)
-4. Iterate through all members and check this condition.
-
-Key Idea:
-The youngest member is the one with
-zero outgoing gifts and maximum incoming gifts.
+   given[i] == 0
+   received[i] == n-1
+4. Iterate through all members to find such a person.
 
 Complexity:
 Time: O(n + m)
 Space: O(n)
 
 Key Learning:
-- Using arrays to track incoming and outgoing relationships
-- Identifying special nodes in relationship data
+- Modeling relationships as directed graphs
+- Identifying sink nodes in graphs
 
 Improvement Notes:
-- We only need counts, not full gift lists.
-- The logic is similar to identifying a "sink node" in graph problems.
+- Only counts are needed, not full relationship lists.
 */
 
 #include <stdio.h>
@@ -63,7 +63,6 @@ int main() {
     for (int i = 0; i < m; i++) {
         int a, b;
         scanf("%d %d", &a, &b);
-
         given[a]++;
         received[b]++;
     }
@@ -78,6 +77,5 @@ int main() {
     }
 
     printf("%d\n", youngest);
-
     return 0;
 }
